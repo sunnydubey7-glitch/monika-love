@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monika ❤️</title>
+
+<style>
+body{
+margin:0;
+font-family:Segoe UI;
+text-align:center;
+color:white;
+background:linear-gradient(135deg,#1a001f,#330033,#660033);
+overflow:hidden;
+}
+
+.container{
+padding:25px;
+}
+
+img{
+width:90%;
+max-width:380px;
+border-radius:20px;
+box-shadow:0 0 40px #ff4b7d;
+margin-top:20px;
+}
+
+button{
+display:block;
+width:100%;
+margin:12px 0;
+padding:14px;
+border:none;
+border-radius:30px;
+background:linear-gradient(45deg,#ff4b7d,#ff758c);
+color:white;
+font-size:16px;
+}
+
+.hidden{
+display:none;
+}
+
+.petal{
+position:fixed;
+top:-10px;
+font-size:24px;
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(0) rotate(0);}
+100%{transform:translateY(110vh) rotate(360deg);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<img src="https://i.ibb.co/hF9tkP7K/20250427-184047.jpg">
+
+<h2>Happy Valentine’s Day My Love ❤️</h2>
+
+<div id="message">
+<p>
+Monika ❤️ <br><br>
+
+From the moment you entered my life, everything became brighter and more meaningful.  
+You are my peace, my happiness, my forever… and soon, my beautiful wife 💍❤️  
+
+I promise to stand beside you in every phase of life,  
+to protect your smile,  
+to support your dreams,  
+and to love you more deeply every single day.  
+
+You are my safest place, Monika.  
+And I cannot wait to build a lifetime of memories with you.  
+
+Tell me what your heart desires…  
+and I will make it happen for you 💖
+</p>
+
+<button onclick="showOptions()">Continue ❤️</button>
+</div>
+
+<div id="options" class="hidden">
+<h3>Select Your Celebration 😘</h3>
+
+<button onclick="selectOption('Day Trip 🌅')">🌅 Day Trip</button>
+<button onclick="selectOption('Valentine’s Day Gift 🎁')">🎁 Valentine’s Day Gift</button>
+<button onclick="selectOption('Romantic Date 🌹')">🌹 Romantic Date</button>
+<button onclick="selectOption('I’ll Cook Anything 👨‍🍳❤️')">👨‍🍳 I’ll Cook Anything</button>
+
+<p id="result"></p>
+</div>
+
+</div>
+
+<script>
+function showOptions(){
+document.getElementById("message").style.display="none";
+document.getElementById("options").style.display="block";
+}
+
+function selectOption(choice){
+document.getElementById("result").innerHTML=
+"You selected: <b>"+choice+"</b> 💖 Anything for you Monika ❤️ Forever yours.";
+}
+
+setInterval(function(){
+var petal=document.createElement("div");
+petal.className="petal";
+petal.innerHTML="🌹";
+petal.style.left=Math.random()*100+"vw";
+petal.style.animationDuration=(Math.random()*6+6)+"s";
+document.body.appendChild(petal);
+setTimeout(function(){petal.remove();},12000);
+},1000);
+</script>
+
+</body>
+</html>
