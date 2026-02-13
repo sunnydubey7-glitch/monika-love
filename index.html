@@ -5,79 +5,118 @@
 <title>Monika ❤️</title>
 
 <style>
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  text-align: center;
-  color: white;
-  background: linear-gradient(135deg,#1a001f,#330033,#660033);
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+text-align:center;
+color:white;
+background:radial-gradient(circle at top,#3b003b,#1a001f 60%);
+overflow-x:hidden;
+}
+
+/* Star Background */
+.stars{
+position:fixed;
+width:100%;
+height:100%;
+background:url('https://www.transparenttextures.com/patterns/stardust.png');
+opacity:0.3;
+z-index:-1;
 }
 
 /* Container */
-.container {
-  padding: 25px 15px 60px 15px;
+.container{
+padding:25px 15px 60px 15px;
+animation:fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
 }
 
 /* Image */
-img {
-  width: 90%;
-  max-width: 380px;
-  border-radius: 20px;
-  box-shadow: 0 0 35px #ff4b7d;
-  margin-top: 20px;
+img{
+width:90%;
+max-width:380px;
+border-radius:20px;
+box-shadow:0 0 35px #ff4b7d;
+margin-top:20px;
 }
 
 /* Text */
-p {
-  line-height: 1.7;
-  font-size: 16px;
+p{
+line-height:1.7;
+font-size:16px;
 }
 
 /* Buttons */
-button {
-  display: block;
-  width: 100%;
-  margin: 12px 0;
-  padding: 14px;
-  border: none;
-  border-radius: 30px;
-  background: linear-gradient(45deg,#ff4b7d,#ff758c);
-  color: white;
-  font-size: 16px;
+button{
+display:block;
+width:100%;
+margin:12px 0;
+padding:14px;
+border:none;
+border-radius:30px;
+background:linear-gradient(45deg,#ff4b7d,#ff758c);
+color:white;
+font-size:16px;
+box-shadow:0 0 15px #ff4b7d;
+transition:0.3s;
 }
 
-/* Hidden section */
-.hidden {
-  display: none;
+button:hover{
+transform:scale(1.05);
 }
 
-/* Result */
-#result {
-  margin-top: 15px;
-  font-size: 18px;
+/* Ring Glow Animation */
+.ring{
+font-size:26px;
+animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+0%{text-shadow:0 0 5px #fff;}
+50%{text-shadow:0 0 20px #ff4b7d;}
+100%{text-shadow:0 0 5px #fff;}
+}
+
+.hidden{
+display:none;
+}
+
+#result{
+margin-top:15px;
+font-size:18px;
 }
 
 /* Rose Petals */
-.petal {
-  position: fixed;
-  top: -20px;
-  font-size: 22px;
-  animation: fall linear forwards;
-  pointer-events: none;
+.petal{
+position:fixed;
+top:-20px;
+font-size:22px;
+animation:fall linear forwards;
+pointer-events:none;
 }
 
-@keyframes fall {
-  0% { transform: translateY(0) rotate(0deg); opacity:1; }
-  100% { transform: translateY(110vh) rotate(360deg); opacity:0; }
+@keyframes fall{
+0%{transform:translateY(0) rotate(0deg);opacity:1;}
+100%{transform:translateY(110vh) rotate(360deg);opacity:0;}
 }
 </style>
 </head>
 
 <body>
 
+<div class="stars"></div>
+
+<audio id="bgMusic" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=romantic-background-112191.mp3" type="audio/mp3">
+</audio>
+
 <div class="container">
 
-<img src="https://i.ibb.co/hF9tkP7K/20250427-184047.jpg" alt="Monika ❤️">
+<img src="https://i.ibb.co/hF9tkP7K/20250427-184047.jpg">
 
 <h2>Happy Valentine’s Day My Love ❤️</h2>
 
@@ -86,7 +125,7 @@ button {
 Monika ❤️ <br><br>
 
 From the moment you entered my life, everything became brighter and more meaningful.  
-You are my peace, my happiness, my forever… and soon, my beautiful wife 💍❤️  
+You are my peace, my happiness, my forever… and soon, my beautiful wife <span class="ring">💍</span>❤️  
 
 I promise to stand beside you in every phase of life,  
 to protect your smile,  
@@ -100,7 +139,7 @@ Tell me what your heart desires…
 and I will make it happen for you 💖
 </p>
 
-<button onclick="showOptions()">Continue ❤️</button>
+<button onclick="startExperience()">Continue ❤️</button>
 </div>
 
 <div id="options" class="hidden">
@@ -119,29 +158,27 @@ and I will make it happen for you 💖
 </div>
 
 <script>
-function showOptions(){
-  document.getElementById("message").style.display="none";
-  document.getElementById("options").style.display="block";
-  window.scrollTo(0,0);
+function startExperience(){
+document.getElementById("message").style.display="none";
+document.getElementById("options").style.display="block";
+document.getElementById("bgMusic").play();
+window.scrollTo(0,0);
 }
 
 function selectOption(choice){
-  document.getElementById("result").innerHTML =
-  "You selected: <b>"+choice+"</b> 💖<br>Anything for you, Monika ❤️ Forever yours.";
+document.getElementById("result").innerHTML=
+"You selected: <b>"+choice+"</b> 💖<br>Anything for you, Monika ❤️ Forever yours.";
 }
 
-/* Slow Rose Petals */
+/* Rose Petals */
 setInterval(function(){
-  var petal = document.createElement("div");
-  petal.className = "petal";
-  petal.innerHTML = "🌹";
-  petal.style.left = Math.random()*100 + "vw";
-  petal.style.animationDuration = (Math.random()*5+5) + "s";
-  document.body.appendChild(petal);
-
-  setTimeout(function(){
-    petal.remove();
-  },10000);
+var petal=document.createElement("div");
+petal.className="petal";
+petal.innerHTML="🌹";
+petal.style.left=Math.random()*100+"vw";
+petal.style.animationDuration=(Math.random()*6+5)+"s";
+document.body.appendChild(petal);
+setTimeout(function(){petal.remove();},11000);
 },1200);
 </script>
 
